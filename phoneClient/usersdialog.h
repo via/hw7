@@ -14,7 +14,7 @@ class UsersDialog : public QDialog
 
 public:
     explicit UsersDialog(QWidget *parent = 0);
-    UsersDialog(QStringList qsl);
+    UsersDialog(QStringList qsl, QWidget *parent = 0);
     ~UsersDialog();
 
 private:

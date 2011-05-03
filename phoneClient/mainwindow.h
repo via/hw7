@@ -36,7 +36,7 @@ public:
 
 public slots:
   void setup(QString, QString, QString);
-  void usersDialogSlot();
+  void newUsersList(QStringList);
 
 private:
     Ui::MainWindow *ui;
