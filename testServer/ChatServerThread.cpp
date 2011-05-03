@@ -38,8 +38,8 @@ void ChatServerThread::run() {
       continue;
     in >> length >> type >> data;
     cout << "received type " << type << ": " << data << endl;
-    QLinkedList<ChatServerThread *>::const_iterator iter = clients->constBegin();
-    QLinkedList<ChatServerThread *>::iterator i = clients->begin();
+    QLinkedList<ChatServerThread *>::const_iterator iter;
+    QLinkedList<ChatServerThread *>::iterator i;
 
     switch (type) {
       case 1:
@@ -47,14 +47,14 @@ void ChatServerThread::run() {
         cout << *name << endl;
         break;
       case 2:
-        for (; iter != clients->constEnd(); ++iter) {
+        for (iter = clients->constBegin(); iter != clients->constEnd(); ++iter) {
           (*iter)->addLine(5, *name + QString(": ") + data);
         }
         break;
       case 3:
-        for (; i != clients->end(); ++i) {
+        for (i = clients->begin(); i != clients->end(); ++i) {
           if ((*i) == this) {
-            clients->erase(i);
+            i = clients->erase(i);
           }
         }
         terminate();
@@ -62,7 +62,7 @@ void ChatServerThread::run() {
       case 4:
         QStringList names;
         QLinkedList<ChatServerThread *>::const_iterator iter = clients->constBegin();
-        for (; iter != clients->constEnd(); ++iter) {
+        for (iter = clients->constBegin(); iter != clients->constEnd(); ++iter) {
           names << (*iter)->getName();
         }
 
