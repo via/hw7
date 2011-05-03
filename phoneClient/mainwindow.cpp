@@ -13,6 +13,7 @@
 #include <QtCore/QCoreApplication>
 
 #include "connectdialog.h"
+#include "usersdialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -32,6 +33,12 @@ MainWindow::MainWindow(QWidget *parent)
 
   client = NULL;
 
+}
+
+void MainWindow::usersDialogSlot() {
+
+  UsersDialog *dia = new UsersDialog(this);
+  dia->show();
 }
 
 void MainWindow::setup(QString host, QString port, QString nick) {
