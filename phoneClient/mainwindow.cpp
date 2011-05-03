@@ -15,7 +15,19 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
+	QAction *usersAction = new QAction("Users", this);
+	QAction *quitAction = new QAction("Quit", this);
+	connect(usersAction, SIGNAL(triggered()), this, SLOT(usersDialogSlot()));
+	connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
+	QMenu *menu = new QMenu("Fremantle", this);
+	menu->addAction(usersAction);
+	menu->addAction(quitAction);
+	menuBar()->addMenu(menu);
+
+	ConnectDialog *connector = new ConnectDialog();
+	connector->show();
+
 }
 
 MainWindow::~MainWindow()

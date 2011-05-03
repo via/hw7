@@ -16,8 +16,8 @@ symbian:TARGET.CAPABILITY += NetworkServices
 # MOBILITY +=
 
 SOURCES += main.cpp mainwindow.cpp
-HEADERS += mainwindow.h
-FORMS += mainwindow.ui \
+HEADERS += mainwindow.h 
+FORMS += mainwindow.ui dialog.ui usersdialog.ui\
     dialog.ui
 
 # Please do not modify the following two lines. Required for deployment.
