@@ -5,7 +5,7 @@
 #include <QObject>
 #include <QTcpServer>
 #include <QLinkedList>
-#include "QServerThread.h"
+#include "ChatServerThread.h"
 
 class ChatServer : public QTcpServer {
   Q_OBJECT
