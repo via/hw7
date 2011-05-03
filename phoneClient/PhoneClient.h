@@ -8,10 +8,13 @@ class PhoneClient : public QThread {
 	Q_OBJECT
 
 	public:
+    PhoneClient(QString host, QString port, QString nick, QObject *parent = 0);
 
 	public slots:
-		void usersDialogSlot();
 
 	private:
 
 };
+
+#endif
+

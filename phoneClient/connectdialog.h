@@ -18,6 +18,9 @@ public:
 private:
     Ui::ConnectDialog *ui;
 
+signals:
+    void confirm(QString, QString, QString);
+
 private slots:
     void on_connectButton_clicked();
 };
