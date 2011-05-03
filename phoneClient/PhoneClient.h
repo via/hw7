@@ -3,13 +3,8 @@
 
 #include <QtGui>
 
-QTM_USE_NAMESPACE
 
-namespace Ui {
-	class MainWindow;
-}
-
-class PhoneClient : public QMainWindow {
+class PhoneClient : public QThread {
 	Q_OBJECT
 
 	public:

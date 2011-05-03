@@ -12,6 +12,8 @@
 
 #include <QtCore/QCoreApplication>
 
+#include "connectdialog.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
