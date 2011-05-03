@@ -79,7 +79,7 @@ void PhoneClient::run() {
 void PhoneClient::sendData(int type, QString msg) {
 
   QTextStream cout(stdout);
-  cout << "sending type " << type << endl;
+  cout << "sending type " << type << ": " << msg << endl;
 
   QByteArray block;
   QDataStream out(&block, QIODevice::WriteOnly);

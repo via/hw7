@@ -34,7 +34,10 @@ void ChatServerThread::run() {
     quint8 type;
     QString data;
 
+    if (!sock->waitForReadyRead(60000)) 
+      continue;
     in >> length >> type >> data;
+    cout << "received type " << type << ": " << data << endl;
     QLinkedList<ChatServerThread *>::const_iterator iter = clients->constBegin();
     QLinkedList<ChatServerThread *>::iterator i = clients->begin();
 

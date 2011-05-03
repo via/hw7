@@ -44,11 +44,12 @@ void MainWindow::newMessageIn(QString line) {
 
 void MainWindow::newMessageOut() {
 
+  QTextStream cout(stdout);
   QString message = ui->lineEdit->text();
+  cout << ui->lineEdit->text() << endl;
+  cout << "Sending message in mainwindow: " << message << endl;
   ui->lineEdit->clear();
 
-  QTextStream cout(stdout);
-  cout << "Sending message in mainwindow" << endl;
   client->sendMsg(message);
 }
 
@@ -65,6 +66,7 @@ void MainWindow::setup(QString host, QString port, QString nick) {
   client = new PhoneClient(host, port, nick, NULL);
 	connect(usersAction, SIGNAL(triggered()), client, SLOT(getUsers()));
   connect(client, SIGNAL(usersList(QStringList)), this, SLOT(newUsersList(QStringList)));
+  connect(client, SIGNAL(newMsg(QString)), this, SLOT(newMessageIn(QString)));
   cout << "Called connect" << endl;
   client->connect();
   client->start();
