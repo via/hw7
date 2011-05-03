@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
 	ConnectDialog *connector = new ConnectDialog();
   connect(connector, SIGNAL(confirm(QString, QString, QString)),
       this, SLOT(setup(QString, QString, QString)));
+	connector->setOrientation(ConnectDialog::ScreenOrientationAuto);
 	connector->show();
 
   client = NULL;
