@@ -17,8 +17,7 @@ symbian:TARGET.CAPABILITY += NetworkServices
 
 SOURCES += main.cpp mainwindow.cpp
 HEADERS += mainwindow.h 
-FORMS += mainwindow.ui dialog.ui usersdialog.ui\
-    dialog.ui
+FORMS += mainwindow.ui connectdialog.ui usersdialog.ui\
 
 # Please do not modify the following two lines. Required for deployment.
 include(deployment.pri)
