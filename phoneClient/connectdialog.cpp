@@ -17,4 +17,6 @@ void ConnectDialog::on_connectButton_clicked()
 {
     //connection magic
        //emit signal to thread class slot
+  emit confirm(ui->ipLine->text(), ui->portLine->text(), ui->nickLine->text());
+  accept();
 }

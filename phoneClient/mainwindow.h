@@ -12,6 +12,8 @@
 
 #include <QtGui/QMainWindow>
 
+#include "PhoneClient.h"
+
 namespace Ui {
     class MainWindow;
 }
@@ -32,8 +34,12 @@ public:
     void setOrientation(ScreenOrientation orientation);
     void showExpanded();
 
+public slots:
+  void setup(QString, QString, QString);
+
 private:
     Ui::MainWindow *ui;
+    PhoneClient *client;
 };
 
 #endif // MAINWINDOW_H

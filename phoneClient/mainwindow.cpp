@@ -12,6 +12,8 @@
 
 #include <QtCore/QCoreApplication>
 
+#include "connectdialog.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -27,6 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
 
 	ConnectDialog *connector = new ConnectDialog();
 	connector->show();
+
+  client = NULL;
+
+}
+
+void MainWindow::setup(QString host, QString port, QString nick) {
+
+  client = new PhoneClient(host, port, nick, NULL);
 
 }
 

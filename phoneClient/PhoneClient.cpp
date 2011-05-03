@@ -5,16 +5,11 @@
 #include <QtCore>
 #include <QtGui>
 
-QTM_USE_NAMESPACE
 
-PhoneClient::PhoneClient(QWidget *parent)
-	: QMainWindow(parent), ui(new Ui::PhoneClient) {
+PhoneClient::PhoneClient(QString host, QString port,
+    QString nick, QObject *parent)
+	: QThread(parent) {
 
-	ui->setupUi(this);
 	
 }
 
-void PhoneClient::usersDialogSlot() {
-	UsersDialog *ud = new UsersDialog(this);
-	ud->show();
-}
