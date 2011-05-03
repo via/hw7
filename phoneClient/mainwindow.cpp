@@ -19,11 +19,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
-  client = NULL;
-	QAction *usersAction = new QAction("Users", this);
+	usersAction = new QAction("Users", this);
 	QAction *quitAction = new QAction("Quit", this);
-	connect(usersAction, SIGNAL(triggered()), client, SLOT(getUsers()));
 	connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
+  connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(newMessageOut()));
 	QMenu *menu = new QMenu("Fremantle", this);
 	menu->addAction(usersAction);
 	menu->addAction(quitAction);
@@ -48,6 +47,8 @@ void MainWindow::newMessageOut() {
   QString message = ui->lineEdit->text();
   ui->lineEdit->clear();
 
+  QTextStream cout(stdout);
+  cout << "Sending message in mainwindow" << endl;
   client->sendMsg(message);
 }
 
@@ -62,6 +63,8 @@ void MainWindow::setup(QString host, QString port, QString nick) {
 
   QTextStream cout(stdout);
   client = new PhoneClient(host, port, nick, NULL);
+	connect(usersAction, SIGNAL(triggered()), client, SLOT(getUsers()));
+  connect(client, SIGNAL(usersList(QStringList)), this, SLOT(newUsersList(QStringList)));
   cout << "Called connect" << endl;
   client->connect();
   client->start();

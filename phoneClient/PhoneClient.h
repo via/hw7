@@ -29,6 +29,8 @@ class PhoneClient : public QThread {
     quint16 port;
     QTcpSocket *sock;
 
+    void sendData(int, QString);
+
 };
 
 #endif

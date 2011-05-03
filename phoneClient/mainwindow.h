@@ -43,6 +43,7 @@ public slots:
 private:
     Ui::MainWindow *ui;
     PhoneClient *client;
+    QAction *usersAction;
 };
 
 #endif // MAINWINDOW_H
