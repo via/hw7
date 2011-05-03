@@ -7,6 +7,7 @@ TARGET =
 DEPENDPATH += .
 INCLUDEPATH += .
 
+CONFIG += debug
 QT += network
 # Input
 HEADERS += ChatServer.h ChatServerThread.h
