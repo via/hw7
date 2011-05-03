@@ -28,6 +28,12 @@
      <height>27</height>
     </rect>
    </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+     <horstretch>200</horstretch>
+     <verstretch>80</verstretch>
+    </sizepolicy>
+   </property>
    <property name="text">
     <string>Connect</string>
    </property>
@@ -40,6 +46,12 @@
      <width>67</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>100</horstretch>
+     <verstretch>80</verstretch>
+    </sizepolicy>
    </property>
    <property name="text">
     <string>IP:</string>
@@ -54,6 +66,12 @@
      <height>27</height>
     </rect>
    </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+     <horstretch>200</horstretch>
+     <verstretch>80</verstretch>
+    </sizepolicy>
+   </property>
   </widget>
   <widget class="QLabel" name="portLabel">
    <property name="geometry">
@@ -63,6 +81,12 @@
      <width>67</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>100</horstretch>
+     <verstretch>80</verstretch>
+    </sizepolicy>
    </property>
    <property name="text">
     <string>Port:</string>
@@ -77,6 +101,12 @@
      <height>27</height>
     </rect>
    </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+     <horstretch>200</horstretch>
+     <verstretch>80</verstretch>
+    </sizepolicy>
+   </property>
   </widget>
   <widget class="QLabel" name="nickLabel">
    <property name="geometry">
@@ -86,6 +116,12 @@
      <width>67</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>100</horstretch>
+     <verstretch>80</verstretch>
+    </sizepolicy>
    </property>
    <property name="text">
     <string>Nick:</string>
@@ -99,6 +135,12 @@
      <width>211</width>
      <height>27</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+     <horstretch>200</horstretch>
+     <verstretch>80</verstretch>
+    </sizepolicy>
    </property>
   </widget>
  </widget>

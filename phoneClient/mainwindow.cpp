@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
 	menuBar()->addMenu(menu);
 
 	ConnectDialog *connector = new ConnectDialog();
+	connector->setOrientation(ConnectDialog::ScreenOrientationAuto);
 	connector->show();
 
   client = NULL;

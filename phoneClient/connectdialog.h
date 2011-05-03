@@ -14,6 +14,13 @@ class ConnectDialog : public QDialog
 public:
     explicit ConnectDialog(QWidget *parent = 0);
     ~ConnectDialog();
+	enum ScreenOrientation {
+		ScreenOrientationLockPortrait,
+		ScreenOrientationLockLandscape,
+		ScreenOrientationAuto
+	};
+
+	void setOrientation(ScreenOrientation orientation);
 
 private:
     Ui::ConnectDialog *ui;
