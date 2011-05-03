@@ -36,6 +36,10 @@ void PhoneClient::sendMsg(QString msg) {
 
 }
 
+void PhoneClient::disconnect() {
+        sendData(3, "");
+}
+
 void PhoneClient::getUsers() {
 
   /* Send message to get stringlist */

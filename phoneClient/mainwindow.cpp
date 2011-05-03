@@ -20,8 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
 	ui->setupUi(this);
 	usersAction = new QAction("Users", this);
-	QAction *quitAction = new QAction("Quit", this);
-	connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
+	quitAction = new QAction("Quit", this);
+	connect(quitAction, SIGNAL(triggered()), this, SLOT(endProgram()));
   connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(newMessageOut()));
 	QMenu *menu = new QMenu("Fremantle", this);
 	menu->addAction(usersAction);
@@ -58,6 +58,11 @@ void MainWindow::newUsersList(QStringList users) {
 
   UsersDialog *dia = new UsersDialog(users, this);
   dia->show();
+}
+
+void MainWindow::endProgram() {
+  client->disconnect(); 	
+  close(); 
 }
 
 void MainWindow::setup(QString host, QString port, QString nick) {

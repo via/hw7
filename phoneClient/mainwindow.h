@@ -39,11 +39,13 @@ public slots:
   void newUsersList(QStringList);
   void newMessageIn(QString);
   void newMessageOut();
+  void endProgram();
 
 private:
     Ui::MainWindow *ui;
     PhoneClient *client;
     QAction *usersAction;
+	QAction *quitAction;
 };
 
 #endif // MAINWINDOW_H

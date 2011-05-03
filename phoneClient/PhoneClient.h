@@ -17,6 +17,7 @@ class PhoneClient : public QThread {
     void connect();
     void sendMsg(QString);
     void getUsers();
+	void disconnect();
 
   signals:
     void newMsg(QString);
