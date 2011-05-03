@@ -4,6 +4,8 @@
 
 #include <QObject>
 #include <QTcpServer>
+#include <QLinkedList>
+#include "QServerThread.h"
 
 class ChatServer : public QTcpServer {
   Q_OBJECT
@@ -14,5 +16,10 @@ class ChatServer : public QTcpServer {
   protected:
     void incomingConnection(int socket);
 
-  }
+  private:
+    QLinkedList<ChatServerThread *> *clients;
+
+};
+
+#endif
   

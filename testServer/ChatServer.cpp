@@ -1,5 +1,7 @@
 
 #include <QtGui>
+#include <QTcpServer>
+#include <QLinkedList>
 #include "ChatServer.h"
 
 ChatServer::ChatServer(QObject *parent) : QTcpServer(parent) {
