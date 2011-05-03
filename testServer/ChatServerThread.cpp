@@ -53,7 +53,7 @@ void ChatServerThread::run() {
         break;
       case 3:
         for (; i != clients->end(); ++i) {
-          if ((*i)->getName() == *name) {
+          if ((*i) == this) {
             clients->erase(i);
           }
         }
@@ -70,10 +70,7 @@ void ChatServerThread::run() {
         /* Get names and send them */
         break;
       }
-    
   }
-
-
 }
 
 
