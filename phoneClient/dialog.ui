@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="connectButton">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -32,7 +32,7 @@
     <string>Connect</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="ipLabel">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -45,17 +45,17 @@
     <string>IP:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="ipLine">
    <property name="geometry">
     <rect>
      <x>100</x>
      <y>40</y>
-     <width>113</width>
+     <width>211</width>
      <height>27</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="portLabel">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -68,17 +68,17 @@
     <string>Port:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="portLine">
    <property name="geometry">
     <rect>
      <x>100</x>
      <y>90</y>
-     <width>113</width>
+     <width>211</width>
      <height>27</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="nickLabel">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -91,12 +91,12 @@
     <string>Nick:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="nickLine">
    <property name="geometry">
     <rect>
      <x>100</x>
      <y>140</y>
-     <width>113</width>
+     <width>211</width>
      <height>27</height>
     </rect>
    </property>
