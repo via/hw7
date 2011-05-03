@@ -41,6 +41,13 @@ void PhoneClient::getUsers() {
 
 void PhoneClient::run() {
 
+  QTextStream cout(stdout);
+  cout << "Waiting for connect" << endl;
+  sock->waitForConnected();
+  cout << "Connected" << endl;
+  sock->write("Hello, World\n", 13);
+  sock->flush();
+
   while (true) {;}
 
 }

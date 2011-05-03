@@ -60,7 +60,11 @@ void MainWindow::newUsersList(QStringList users) {
 
 void MainWindow::setup(QString host, QString port, QString nick) {
 
+  QTextStream cout(stdout);
   client = new PhoneClient(host, port, nick, NULL);
+  cout << "Called connect" << endl;
+  client->connect();
+  client->start();
 
 }
 
