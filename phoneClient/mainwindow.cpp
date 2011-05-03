@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
 	ui->setupUi(this);
 	QAction *usersAction = new QAction("Users", this);
 	QAction *quitAction = new QAction("Quit", this);
-	connect(usersAction, SIGNAL(triggered()), this, SLOT(usersDialogSlot()));
+	connect(usersAction, SIGNAL(triggered()), client, SLOT(getUsers()));
 	connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
 	QMenu *menu = new QMenu("Fremantle", this);
 	menu->addAction(usersAction);
@@ -36,9 +36,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 }
 
-void MainWindow::usersDialogSlot() {
+void MainWindow::newUsersList(QStringList users) {
 
-  UsersDialog *dia = new UsersDialog(this);
+  UsersDialog *dia = new UsersDialog(users, this);
   dia->show();
 }
 

@@ -10,7 +10,8 @@ UsersDialog::UsersDialog(QWidget *parent) :
 
 }
 
-UsersDialog::UsersDialog(QStringList qsl)
+UsersDialog::UsersDialog(QStringList qsl, QWidget *parent) :
+  QDialog(parent), ui(new Ui::UsersDialog)
 {
     ui->setupUi(this);
     for(int i=0;i<qsl.size();i++)
