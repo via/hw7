@@ -37,6 +37,8 @@ public:
 public slots:
   void setup(QString, QString, QString);
   void newUsersList(QStringList);
+  void newMessageIn(QString);
+  void newMessageOut();
 
 private:
     Ui::MainWindow *ui;

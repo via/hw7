@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
 	ui->setupUi(this);
 	QAction *usersAction = new QAction("Users", this);
 	QAction *quitAction = new QAction("Quit", this);
-	connect(usersAction, SIGNAL(triggered()), client, SLOT(getUsers()));
+//	connect(usersAction, SIGNAL(triggered()), client, SLOT(getUsers()));
 	connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
 	QMenu *menu = new QMenu("Fremantle", this);
 	menu->addAction(usersAction);
@@ -29,11 +29,26 @@ MainWindow::MainWindow(QWidget *parent)
 	menuBar()->addMenu(menu);
 
 	ConnectDialog *connector = new ConnectDialog();
+  connect(connector, SIGNAL(confirm(QString, QString, QString)),
+      this, SLOT(setup(QString, QString, QString)));
 	connector->show();
 
   client = NULL;
 
 }
+
+void MainWindow::newMessageIn(QString line) {
+  ui->chatTextEdit->appendPlainText(line);
+}
+
+void MainWindow::newMessageOut() {
+
+  QString message = ui->lineEdit->text();
+  ui->lineEdit->clear();
+
+  client->sendMsg(message);
+}
+
 
 void MainWindow::newUsersList(QStringList users) {
 

@@ -16,6 +16,7 @@ symbian:TARGET.CAPABILITY += NetworkServices
 # MOBILITY +=
 
 QT += network
+CONFIG += debug
 
 SOURCES += main.cpp mainwindow.cpp connectdialog.cpp usersdialog.cpp \
 PhoneClient.cpp
