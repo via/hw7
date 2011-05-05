@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Phone Client</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
@@ -39,6 +39,9 @@
     </size>
    </property>
    <layout class="QFormLayout" name="formLayout">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
     <item row="0" column="0" colspan="2">
      <widget class="QPlainTextEdit" name="chatTextEdit">
       <property name="sizePolicy">
@@ -47,12 +50,15 @@
         <verstretch>32</verstretch>
        </sizepolicy>
       </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
       <property name="readOnly">
        <bool>true</bool>
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="2">
+    <item row="3" column="0" colspan="2">
      <widget class="QLineEdit" name="lineEdit">
       <property name="sizePolicy">
        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
