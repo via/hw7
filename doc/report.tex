@@ -48,7 +48,8 @@ The second part of this project was the test chat server. This server did not ha
 ConnectDialog, a subclass of QDialog, is a pop-up dialog that appears on program start up. This dialog has three fields: IP, Port, and Nick. Where IP is the IP address of the server, Port is the port teh server is broadcasting over and lastly Nick is the alias the current client window will take upon connecting to the specifed server. Lastly there is a "Connect" button that sends the connection data to the server.
 
 \item[PhoneClient] \hfill \\
-PhoneClient, an extension of QThread, is the class that handles all of the communications to teh server. 
+PhoneClient, an extension of QThread, is the class that handles all of the
+communications to the server. 
 
 \item[MainWindow] \hfill \\
 MainWindow, an extension of QMainWindow, is the main application window for the phone client.
@@ -57,10 +58,16 @@ MainWindow, an extension of QMainWindow, is the main application window for the 
 UsersDialog, a subclass of QDialog, is a pop-up dialog that displays the current users on the server ther client is connected to. It does this by taking in a QStringList via the constructor. Then displays the contents of the list onto the GUI.
 
 \item[ChatServerThread] \hfill \\
-ChatServerThread, a subclass of QThread, 
+ChatServerThread, a subclass of QThread, that represents a socket connection to
+a client.  This class knows how to communicate with a client, and has signals
+and slots appropriately set up to distribute newly obtained information.
 
 \item[ChatServer] \hfill \\
-ChatServer, a subclass of QTcpServer, 
+ChatServer, a subclass of QTcpServer, accepts socket connections from the
+client.  When it does so, it instantiates a new ChatServerThread and assigns it
+responsibility of the socket descriptor to it.  It also maintains a linked list
+of these connections so that individual threads know what connections are
+available.
 
 \end{description}
 
@@ -70,7 +77,11 @@ Via created the test server pragram while Burns and Chwalowski slpit up the clie
 Chwalowski worked on the connection screen and the main window of the chat client. She also worked on the communications from client to server.Via also worked on the client side communications with Chwalowski.
 
 \section{Problems}
-Another  smaller issue was getting TCP to work correctly. Redirection wouldn't work until we waited for input.
+Another smaller issue was getting TCP to work correctly. It tooks some trial and
+error to determine one had to wait for input to be available (input redirection
+doesn't block), and the Qt documentation does not make this very clear. 
+
+Some experimenting was done with SSL Sockets, but was abandoned.
 
 One major problem  was when trying to establish a connection with Professor Plassman's server. Our client would connect to the server just fine. Until the users window was opened, in which case the messages we typed in would not be sent and therefore not displayed. The user window would also disrupt recieving other people's messages.  
 
