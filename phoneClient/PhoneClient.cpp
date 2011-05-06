@@ -1,3 +1,8 @@
+/****************************************************
+ * Group 2, ECE 3574, Spring 2011, Homework 7
+ * Date: 5/6/2011
+ * **************************************************/
+
 #include "PhoneClient.h"
 #include "ui_mainwindow.h"
 #include "ui_usersdialog.h"
