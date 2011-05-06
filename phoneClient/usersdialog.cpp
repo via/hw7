@@ -10,6 +10,7 @@ UsersDialog::UsersDialog(QWidget *parent) :
 
 }
 
+/* Constructor to create the user list dialog */
 UsersDialog::UsersDialog(QStringList qsl, QWidget *parent) :
   QDialog(parent), ui(new Ui::UsersDialog)
 {

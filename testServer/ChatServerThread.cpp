@@ -8,6 +8,7 @@
 
 #include "ChatServerThread.h"
 
+
 ChatServerThread::ChatServerThread(int socket, 
     QLinkedList<ChatServerThread *> *list, QObject *parent) : QThread(parent) {
     
@@ -16,12 +17,14 @@ ChatServerThread::ChatServerThread(int socket,
     
 }
 
+/* This will be run for every connection */
 void ChatServerThread::run() {
 
   QTextStream cout (stdout);
 
 
   sock = new QTcpSocket();
+  /*Create a QTcpSocket from the descriptor */
   if (!sock->setSocketDescriptor(socket)) {
     return;
   }
@@ -30,28 +33,27 @@ void ChatServerThread::run() {
   while(true) {
     QDataStream in(sock);
 
-    quint16 length;
+    quint16 length; /* These three variables will be what we receive */
     quint8 type;
     QString data;
 
-    if (!sock->waitForReadyRead(60000)) 
+    if (!sock->waitForReadyRead(60000))  /*Wait for data to be available */
       continue;
-    in >> length >> type >> data;
-    cout << "received type " << type << ": " << data << endl;
+    in >> length >> type >> data; /* Input the data */
     QLinkedList<ChatServerThread *>::const_iterator iter;
     QLinkedList<ChatServerThread *>::iterator i;
 
     switch (type) {
-      case 1:
+      case 1: /* Type 1 -- New connection */
         name = new QString(data);
         cout << *name << endl;
         break;
-      case 2:
+      case 2: /* Type 2 -- iterate over all clients and send the line to it */
         for (iter = clients->constBegin(); iter != clients->constEnd(); ++iter) {
           (*iter)->addLine(5, *name + QString(": ") + data);
         }
         break;
-      case 3:
+      case 3: /* Type 3 -- find the client and remove it */
         for (i = clients->begin(); i != clients->end(); ++i) {
           if ((*i) == this) {
             i = clients->erase(i);
@@ -59,14 +61,14 @@ void ChatServerThread::run() {
         }
         terminate();
         break;
-      case 4:
+      case 4: /* Type 4 -- return a list of all clients */
         QStringList names;
         QLinkedList<ChatServerThread *>::const_iterator iter = clients->constBegin();
         for (iter = clients->constBegin(); iter != clients->constEnd(); ++iter) {
           names << (*iter)->getName();
         }
 
-        addLine(6, names.join(":"));
+        addLine(6, names.join(":")); /* Bind together with colons */
         /* Get names and send them */
         break;
       }
@@ -82,6 +84,7 @@ QString ChatServerThread::getName() {
   return QString("[not connected]");
 }
 
+/* General function to send back a message with a type */
 void ChatServerThread::addLine(int type, QString line) {
 
   /* Send response */
@@ -91,7 +94,7 @@ void ChatServerThread::addLine(int type, QString line) {
     out << (quint16)0;
     out << (quint8)type;
     out << line;
-    out.device()->seek(0);
+    out.device()->seek(0); /*Seek back to set the time */
     out << (quint16)(outblock.size() - sizeof(quint16));
     sock->write(outblock);
     sock->flush();

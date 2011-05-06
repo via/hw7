@@ -10,11 +10,15 @@ ChatServer::ChatServer(QObject *parent) : QTcpServer(parent) {
 
 }
 
+
+/* Called when the TcpServer gets a new connection */
+
 void ChatServer::incomingConnection(int socket) {
 
   QTextStream cout(stdout);
   cout << "Connection!" << endl;
 
+  /* Start a new server thread */
   ChatServerThread *newclient = new ChatServerThread(socket, clients);
   newclient->start();
   clients->append(newclient);

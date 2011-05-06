@@ -27,6 +27,7 @@ void PhoneClient::connect() {
 
 }
 
+/*Send message back to server */
 void PhoneClient::sendMsg(QString msg) {
   QTextStream cout(stdout);
   cout << "Sending message in phoneclient" << endl;
@@ -36,6 +37,7 @@ void PhoneClient::sendMsg(QString msg) {
 
 }
 
+/* Slot for sending disconnect message */
 void PhoneClient::disconnect() {
         sendData(3, "");
 }
@@ -53,26 +55,27 @@ void PhoneClient::run() {
   sock->waitForConnected();
   QDataStream in(sock);
 
+  /* Send initial connect message */
   sendData(1, nickname);
 
 
   while (true) {
     quint16 len;
-    quint8 type;
+    quint8 type; /* receiving into these vars */
     QString data;
  
-    if (!sock->waitForReadyRead(60000))
+    if (!sock->waitForReadyRead(60000)) /*Wait until input is ready */
       continue;
-    in >> len >> type >> data;
+    in >> len >> type >> data; /*Input*/
 
     QTextStream cout (stdout);
     cout << type << ": " << data << endl;
     switch (type) {
       case 5: 
-        emit newMsg(data);
+        emit newMsg(data); /* new message received */
         break;
       case 6:
-        emit usersList(data.split(":"));
+        emit usersList(data.split(":")); /* Returned message containing user list */
         break;
       }
 
@@ -80,6 +83,7 @@ void PhoneClient::run() {
 
 }
 
+/* Generic function to send data of type type. */
 void PhoneClient::sendData(int type, QString msg) {
 
   QTextStream cout(stdout);

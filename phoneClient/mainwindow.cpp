@@ -19,10 +19,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
-	usersAction = new QAction("Users", this);
+	usersAction = new QAction("Users", this); /*Actions for the menu*/
 	quitAction = new QAction("Quit", this);
-	connect(quitAction, SIGNAL(triggered()), this, SLOT(endProgram()));
-  connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(newMessageOut()));
+	connect(quitAction, SIGNAL(triggered()), this, SLOT(endProgram())); /*Quit quits */
+  connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(newMessageOut())); /*if they sent a line...*/
 	QMenu *menu = new QMenu("Fremantle", this);
 	menu->addAction(usersAction);
 	menu->addAction(quitAction);
@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	ConnectDialog *connector = new ConnectDialog();
   connect(connector, SIGNAL(confirm(QString, QString, QString)),
-      this, SLOT(setup(QString, QString, QString)));
+      this, SLOT(setup(QString, QString, QString))); /*initial confirmation dialog*/
 	connector->setOrientation(ConnectDialog::ScreenOrientationAuto);
 	connector->show();
 
@@ -39,12 +39,12 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void MainWindow::newMessageIn(QString line) {
-  ui->chatTextEdit->appendPlainText(line);
+  ui->chatTextEdit->appendPlainText(line); /*Add new line to textedit */
 }
 
 void MainWindow::newMessageOut() {
 
-  QTextStream cout(stdout);
+  QTextStream cout(stdout); /* Send the message to the thread class */
   QString message = ui->lineEdit->text();
   cout << ui->lineEdit->text() << endl;
   cout << "Sending message in mainwindow: " << message << endl;
@@ -55,7 +55,7 @@ void MainWindow::newMessageOut() {
 
 
 void MainWindow::newUsersList(QStringList users) {
-
+  /* Called when the socket thread has received a list */
   UsersDialog *dia = new UsersDialog(users, this);
   dia->show();
 }
@@ -68,10 +68,11 @@ void MainWindow::endProgram() {
 void MainWindow::setup(QString host, QString port, QString nick) {
 
   QTextStream cout(stdout);
-  client = new PhoneClient(host, port, nick, NULL);
+  client = new PhoneClient(host, port, nick, NULL); /* Create the client thread */
 	connect(usersAction, SIGNAL(triggered()), client, SLOT(getUsers()));
   connect(client, SIGNAL(usersList(QStringList)), this, SLOT(newUsersList(QStringList)));
   connect(client, SIGNAL(newMsg(QString)), this, SLOT(newMessageIn(QString)));
+  /* Set up signals for new messages, user list */
   cout << "Called connect" << endl;
   client->connect();
   client->start();
