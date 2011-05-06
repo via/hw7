@@ -1,3 +1,8 @@
+/****************************************************
+ * Group 2, ECE 3574, Spring 2011, Homework 7
+ * Date: 5/6/2011
+ * **************************************************/
+
 #include "mainwindow.h"
 #include "usersdialog.h"
 #include "ui_usersdialog.h"
