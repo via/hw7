@@ -6,6 +6,6 @@ Terminal=false
 Name=phoneClient
 Exec=/opt/usr/bin/phoneClient
 Icon=phoneClient
-X-Window-Icon=
+X-Window-Icon=phoneClient
 X-HildonDesk-ShowInToolbar=true
 X-Osso-Type=application/x-executable
